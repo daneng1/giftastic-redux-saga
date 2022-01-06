@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { submitSearch } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 
+import History from "../history";
+
 const FormContainer = styled.div`
     display: flex;
     // width: 200px;
@@ -51,15 +53,23 @@ const Button = styled.button`
   }
 `;
 
-function Search({}) {
+export default function Search() {
     const dispatch = useDispatch();
     const [input, setInput] = useState('');
+    const [expanded, setExpanded] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(submitSearch(input));
         setInput('');
+        setExpanded(false);
     }
+
+    const searches = useSelector(state => state.search.search);
+    const loading = useSelector((state) => state.search.loading);
+    const error = useSelector((state) => state.search.error);
+
+    console.log('searches', searches);
 
     return (
         <FormContainer>
@@ -67,13 +77,14 @@ function Search({}) {
                 <Label>
                     Find Gifs
                 </Label>
-                <Input type="text" value={input} placeholder="SEARCH" onChange={e => setInput(e.target.value)}/>
+                <Input onFocus={() => setExpanded(true)} onBlur={() => setExpanded(false)} type="text" value={input} placeholder="SEARCH" onChange={e => setInput(e.target.value)}/>
                 <Button type="submit" >
-                    <FontAwesomeIcon icon={solid('magnifying-glass')} style={{ "margin-left": "-.5em" }}/>
-                </Button> 
+                    <FontAwesomeIcon icon={solid('magnifying-glass')} style={{ "marginLeft": "-.5em" }}/>
+                </Button>
+                {expanded &&
+                    <History searches={searches} loading={loading} error={error} />
+                } 
             </form>
         </FormContainer>
     )
 }
-
-export default Search;

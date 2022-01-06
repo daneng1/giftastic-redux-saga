@@ -1,12 +1,15 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { all, call, put, takeEvery } from 'redux-saga/effects'
 import searchGifs from '../requests/searchGifs'
 import 'regenerator-runtime/runtime'
 
 function* handleGetGifs(data) {
-    // console.log('inside handler',data.data)
+    const search = data.data;
     try {
-        const gifs = yield call(searchGifs, data)
-        yield put({type: 'GET_GIFS_SUCCESS', gifs: gifs})
+        const gifs = yield call(searchGifs, search)
+        yield all([
+            put({type: 'GET_GIFS_SUCCESS', gifs: gifs}),
+            put({type: 'SEARCH_GIFS_SUCCESS', search})
+        ])
     } catch(err) {
         yield put({type: 'GET_GIFS_ERROR', message: err.message})
     }

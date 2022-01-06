@@ -34,8 +34,6 @@ export default function App() {
     dispatch(getGifs());
   }, []);
 
-  console.log(gifs.data);
-
   return (
     <Wrapper>
       <Header />
