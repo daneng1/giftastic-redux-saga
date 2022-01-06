@@ -7,8 +7,8 @@ function* handleGetGifs(data) {
     try {
         const gifs = yield call(searchGifs, search)
         yield all([
-            put({type: 'GET_GIFS_SUCCESS', gifs: gifs}),
-            put({type: 'SEARCH_GIFS_SUCCESS', search})
+            // put({type: 'GET_GIFS_SUCCESS', gifs: gifs}),
+            put({type: 'SEARCH_GIFS_SUCCESS', gifs: gifs.data, search})
         ])
     } catch(err) {
         yield put({type: 'GET_GIFS_ERROR', message: err.message})

@@ -65,24 +65,26 @@ export default function Search() {
         setExpanded(false);
     }
 
+    const handleClick = (e) => {
+        handleSubmit(e)
+    }
+
     const searches = useSelector(state => state.search.search);
     const loading = useSelector((state) => state.search.loading);
     const error = useSelector((state) => state.search.error);
 
-    console.log('searches', searches);
-
     return (
         <FormContainer>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={(e) => handleSubmit(e)} onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)}>
                 <Label>
                     Find Gifs
                 </Label>
-                <Input onFocus={() => setExpanded(true)} onBlur={() => setExpanded(false)} type="text" value={input} placeholder="SEARCH" onChange={e => setInput(e.target.value)}/>
+                <Input  type="text" value={input} placeholder="SEARCH" onChange={e => setInput(e.target.value)}/>
                 <Button type="submit" >
                     <FontAwesomeIcon icon={solid('magnifying-glass')} style={{ "marginLeft": "-.5em" }}/>
                 </Button>
                 {expanded &&
-                    <History searches={searches} loading={loading} error={error} />
+                    <History handleClick={handleClick} setInput={setInput} searches={searches} loading={loading} error={error} />
                 } 
             </form>
         </FormContainer>
