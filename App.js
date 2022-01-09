@@ -7,6 +7,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Gif from "./components/gif";
 import Search from "./components/search";
+import Random from './components/random'
 
 const Wrapper = styled.div`
   width: 90vw;
@@ -54,6 +55,7 @@ export default function App() {
     <Wrapper>
       <Header />
       <Search />
+      <Random />
       {loading && <h2>Loading...</h2>}
       {error && !loading && <h2>{error}</h2>}
       {searchGifs.length > 0 && (
