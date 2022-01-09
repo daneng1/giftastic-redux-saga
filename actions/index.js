@@ -5,7 +5,6 @@ export const getGifs = () => {
 }
 
 export const submitSearch = (data) => {
-    console.log('action', data)
     return {
         type: "SEARCH_GIFS",
         data,
