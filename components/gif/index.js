@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Card = styled.div`
   height: 43vh;
   position: relative;
-//   flex-direction: column;
+  //   flex-direction: column;
   justify-content: center;
   margin: 5px;
   border-radius: 5px;
@@ -18,15 +18,15 @@ const Image = styled.img`
 `;
 
 const InfoWrapper = styled.div`
-    // height: 20vh;
-    position: absolute;
-    margin: 0 auto;
-    background-color: rgba(255,255,255,.75)
-`
+  // height: 20vh;
+  position: absolute;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.75);
+`;
 
 const Title = styled.p`
-    font-size: 28px;
-`
+  font-size: 28px;
+`;
 
 export default function Gif({ gif }) {
   const [viewModal, setViewModal] = useState(false);
@@ -35,24 +35,20 @@ export default function Gif({ gif }) {
 
   return (
     <Card>
-      <label>
-        {/* {gif.title} */}
-        {viewModal && 
-            <InfoWrapper>
-                <Title>{gif.title}</Title>
-            </InfoWrapper>
-
-        }
-            <a target="_blank" href={gif.url}>
+      {viewModal && (
+        <InfoWrapper>
+          <Title>{gif.title}</Title>
+        </InfoWrapper>
+      )}
+      <a target="_blank" href={gif.url}>
         <Image
-        onMouseEnter={() => setViewModal(true)}
-        onMouseLeave={() => setViewModal(false)}
+          onMouseEnter={() => setViewModal(true)}
+          onMouseLeave={() => setViewModal(false)}
           orientation={width >= height ? "horizontal" : "vertical"}
           src={gif.images.original.url}
           alt={gif.title}
         />
-            </a>
-      </label>
+      </a>
     </Card>
   );
 }
