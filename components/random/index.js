@@ -3,23 +3,40 @@ import { useSelector, useDispatch } from "react-redux";
 import { randomGif } from "./actions";
 import styled from "styled-components";
 
-const Container = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(255,255,255, .8)
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
+const Modal = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
 `;
 
-const Modal = styled.div`
+const Container = styled.div`
+    position: fixed; 
     margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 80vh;
+    top: 20vh;
+    left: 0;
+    background-color: rgba(255,255,255, .8);
+    z-index: 2;
 `;
 
 const Image = styled.img`
-  width: 60vw;
+    position: relative;
+    margin: 0 auto;
+    width: 60vw;
+    z-index: 3;
 `;
+
+const Button = styled.button`
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    z-index: 3;
+`
 
 export default function Random() {
   const [showModal, setShowModal] = useState(false);
@@ -36,18 +53,16 @@ export default function Random() {
   const error = useSelector((state) => state.randomGif.error);
 
   return (
-    <div>
+    <Modal >
       <button onClick={(e) => handleSubmit(e)}>Get a Random Gif</button>
       {loading && <h2>Loading...</h2>}
       {error && !loading && <h2>{error}</h2>}
       {gif.length > 0 && showModal && (
           <Container>
-            <Modal>
             <Image src={gif[0].images.original.url} alt={gif[0].title} />
-            <button onClick={() => setShowModal(false)}>X</button>
-            </Modal>
+            <Button onClick={() => setShowModal(false)}>X</Button>
           </Container>
       )}
-    </div>
+    </Modal>
   );
 }
