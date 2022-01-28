@@ -16,29 +16,6 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const Gifs = styled.div`
-  width: 80vw;
-  height: 44vh;
-  overflow: scroll;
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  // justify-content: center;
-`;
-
-const SearchGifs = styled.div`
-  height: 44vh;
-  width: 80vw;
-  overflow: scroll;
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  // justify-content: center;
-`;
-
-const Title = styled.h1`
-  font-size: 1.5em;
-`;
 
 export default function App() {
   const dispatch = useDispatch();
@@ -52,7 +29,7 @@ export default function App() {
   }, []);
 
   return (
-    <Wrapper>
+    <div class="w-9/10 h-1/1 mx-auto flex-col">
       <Header />
       <Random />
       <Search />
@@ -60,22 +37,22 @@ export default function App() {
       {error && !loading && <h2>{error}</h2>}
       {searchGifs.length > 0 && (
         <>
-          <Title>Search Results</Title>
-          <SearchGifs>
+          <h1 class="font-mono text-xl">Search Results</h1>
+          <div class="h-10 w-80 flex-row mx-auto">
             {searchGifs.map((gif) => {
               return <Gif gif={gif} key={gif.id} />;
             })}
-          </SearchGifs>
+          </div>
         </>
       )}
-      <Title>Trending</Title>
-      <Gifs>
+      <h1 class="font-mono text-xl">Trending</h1>
+      <div class="w-4/5 h-1/3 flex-row overscroll-auto mx-auto">
         {trendingGifs.data &&
           trendingGifs.data.map((gif) => {
             return <Gif gif={gif} key={gif.id} />;
           })}
-      </Gifs>
+      </div>
       <Footer />
-    </Wrapper>
+    </div>
   );
 }

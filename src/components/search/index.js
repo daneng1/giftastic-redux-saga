@@ -76,13 +76,13 @@ export default function Search() {
     return (
         <FormContainer>
             <form onSubmit={(e) => handleSubmit(e)} onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)}>
-                <Label>
+                <label class="text-base">
                     Find Gifs
-                </Label>
+                </label>
                 <Input  type="text" value={input} placeholder="SEARCH" onChange={e => setInput(e.target.value)}/>
-                <Button type="submit" >
-                    <FontAwesomeIcon icon={solid('magnifying-glass')} style={{ "marginLeft": "-.5em" }}/>
-                </Button>
+                <button class="bg-blue inline mx-auto rounded-full h-10 w-10" type="submit" >
+                    <FontAwesomeIcon icon={solid('magnifying-glass')}/>
+                </button>
                 {expanded &&
                     <History handleClick={handleClick} setInput={setInput} searches={searches} loading={loading} error={error} />
                 } 
