@@ -10,6 +10,8 @@ const randomGif = (state = initialState, action) => {
       return { ...state, gif: [action.gif], loading: false };
     case "GET_RANDOM_GIF_ERROR":
       return { ...state, loading: false, error: action.message };
+    case "CLEAR_RANDOM_GIF":
+      return {...state, gif: []}
     default:
       return state;
   }

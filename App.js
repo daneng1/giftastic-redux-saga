@@ -54,8 +54,8 @@ export default function App() {
   return (
     <Wrapper>
       <Header />
-      <Search />
       <Random />
+      <Search />
       {loading && <h2>Loading...</h2>}
       {error && !loading && <h2>{error}</h2>}
       {searchGifs.length > 0 && (

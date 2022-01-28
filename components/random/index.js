@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { randomGif } from "./actions";
+import { randomGif, clearRandomGif } from "./actions";
 import styled from "styled-components";
 
 const Modal = styled.div`
@@ -12,30 +12,32 @@ const Modal = styled.div`
 `;
 
 const Container = styled.div`
-    position: fixed; 
-    margin: 0 auto;
-    align-items: center;
+    position: absolute; 
+    display: flex;
     justify-content: center;
+    align-items: center;
+    margin: auto;
     width: 100vw;
-    height: 80vh;
-    top: 20vh;
+    height: 100vh;
+    top: 0;
     left: 0;
     background-color: rgba(255,255,255, .8);
-    z-index: 2;
+    z-index: 3;
 `;
 
 const Image = styled.img`
-    position: relative;
-    margin: 0 auto;
-    width: 60vw;
+    height: 60vh;
     z-index: 3;
 `;
 
 const Button = styled.button`
-    width: 25px;
-    height: 25px;
-    border-radius: 5px;
-    z-index: 3;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 35px;
+    height: 35px;
+    border-radius: 17px;
+    z-index: 4;
 `
 
 export default function Random() {
@@ -47,6 +49,11 @@ export default function Random() {
     dispatch(randomGif());
     setShowModal(true);
   };
+
+  const handleClose = () => {
+    setShowModal(false);
+    dispatch(clearRandomGif());
+  }
 
   const gif = useSelector((state) => state.randomGif.gif);
   const loading = useSelector((state) => state.randomGif.loading);
@@ -60,7 +67,7 @@ export default function Random() {
       {gif.length > 0 && showModal && (
           <Container>
             <Image src={gif[0].images.original.url} alt={gif[0].title} />
-            <Button onClick={() => setShowModal(false)}>X</Button>
+            <Button onClick={handleClose}>X</Button>
           </Container>
       )}
     </Modal>
