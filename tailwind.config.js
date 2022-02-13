@@ -1,5 +1,10 @@
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: [
+    "./src/**/*.{html,js, jsx}",
+    "./src/components/**/*.{html,js, jsx}",
+    "./index.html",
+    "./src/index.js"
+  ],
   theme: {
     colors: {
       'blue': '#1fb6ff',

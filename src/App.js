@@ -29,7 +29,7 @@ export default function App() {
   }, []);
 
   return (
-    <div class="w-9/10 h-1/1 mx-auto flex-col">
+    <div className="w-9/10 h-1/1 mx-auto flex-col">
       <Header />
       <Random />
       <Search />
@@ -37,16 +37,16 @@ export default function App() {
       {error && !loading && <h2>{error}</h2>}
       {searchGifs.length > 0 && (
         <>
-          <h1 class="font-mono text-xl">Search Results</h1>
-          <div class="h-10 w-80 flex-row mx-auto">
+          <h1 className="font-mono text-xl">Search Results</h1>
+          <div className="h-10 w-80 flex-row mx-auto">
             {searchGifs.map((gif) => {
               return <Gif gif={gif} key={gif.id} />;
             })}
           </div>
         </>
       )}
-      <h1 class="font-mono text-xl">Trending</h1>
-      <div class="w-4/5 h-1/3 flex-row overscroll-auto mx-auto">
+      <h1 className="font-mono text-xl">Trending</h1>
+      <div className="w-full h-1/3 flex-row overscroll-auto mx-auto">
         {trendingGifs.data &&
           trendingGifs.data.map((gif) => {
             return <Gif gif={gif} key={gif.id} />;

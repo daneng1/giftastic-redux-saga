@@ -76,11 +76,11 @@ export default function Search() {
     return (
         <FormContainer>
             <form onSubmit={(e) => handleSubmit(e)} onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)}>
-                <label class="text-base">
+                <label className="text-base">
                     Find Gifs
                 </label>
                 <Input  type="text" value={input} placeholder="SEARCH" onChange={e => setInput(e.target.value)}/>
-                <button class="bg-blue inline mx-auto rounded-full h-10 w-10" type="submit" >
+                <button className="bg-blue inline mx-auto rounded-full h-10 w-10" type="submit" >
                     <FontAwesomeIcon icon={solid('magnifying-glass')}/>
                 </button>
                 {expanded &&
