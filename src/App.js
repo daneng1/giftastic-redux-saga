@@ -29,7 +29,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="w-9/10 h-1/1 mx-auto flex-col">
+    <div className="flex flex-auto flex-col">
       <Header />
       <Random />
       <Search />
@@ -45,7 +45,7 @@ export default function App() {
           </div>
         </>
       )}
-      <h1 className="font-mono text-xl">Trending</h1>
+      <h1 className="text-xl">Trending</h1>
       <div className="w-full h-1/3 flex-row overscroll-auto mx-auto">
         {trendingGifs.data &&
           trendingGifs.data.map((gif) => {
