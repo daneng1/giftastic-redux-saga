@@ -8,7 +8,6 @@ const initialState = {
   };
   
   const search = (state = initialState, action) => {
-    // if(action.type === "SEARCH_GIFS_SUCCESS") console.log('action', action);
     switch (action.type) {
       case "SEARCH_GIFS_SUCCESS":
         const found = state.search.some(item => {
