@@ -16,7 +16,6 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-
 export default function App() {
   const dispatch = useDispatch();
   const trendingGifs = useSelector((state) => state.gifs.gifs);
@@ -29,7 +28,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="flex flex-auto flex-col">
+    <Wrapper >
       <Header />
       <Random />
       <Search />
@@ -53,6 +52,6 @@ export default function App() {
           })}
       </div>
       <Footer />
-    </div>
+    </Wrapper>
   );
 }
