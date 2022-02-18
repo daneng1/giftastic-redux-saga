@@ -28,30 +28,30 @@ export default function App() {
   }, []);
 
   return (
-    <Wrapper >
+    <div className="flex flex-col justify-center flex-auto">
       <Header />
       <Random />
       <Search />
       {loading && <h2>Loading...</h2>}
       {error && !loading && <h2>{error}</h2>}
       {searchGifs.length > 0 && (
-        <>
+        <div className="flex-row">
           <h1 className="font-mono text-xl">Search Results</h1>
           <div className="h-10 w-80 flex-row mx-auto">
             {searchGifs.map((gif) => {
               return <Gif gif={gif} key={gif.id} />;
             })}
           </div>
-        </>
+        </div>
       )}
       <h1 className="text-xl">Trending</h1>
-      <div className="w-full h-1/3 flex-row overscroll-auto mx-auto">
+      <div className="w-full h-1/3 flex flex-row overscroll-auto mx-auto">
         {trendingGifs.data &&
           trendingGifs.data.map((gif) => {
             return <Gif gif={gif} key={gif.id} />;
           })}
       </div>
       <Footer />
-    </Wrapper>
+    </div>
   );
 }
