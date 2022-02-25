@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { randomGif, clearRandomGif } from "./actions";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 const Modal = styled.div`
     display: flex;
@@ -60,16 +60,16 @@ export default function Random() {
   const error = useSelector((state) => state.randomGif.error);
 
   return (
-    <Modal >
+    <div >
       <button onClick={(e) => handleSubmit(e)}>Get a Random Gif</button>
       {loading && <h2>Loading...</h2>}
       {error && !loading && <h2>{error}</h2>}
       {gif.length > 0 && showModal && (
-          <Container>
-            <Image src={gif[0].images.original.url} alt={gif[0].title} />
-            <Button onClick={handleClose}>X</Button>
-          </Container>
+          <div>
+            <image src={gif[0].images.original.url} alt={gif[0].title} />
+            <button onClick={handleClose}>X</button>
+          </div>
       )}
-    </Modal>
+    </div>
   );
 }

@@ -28,7 +28,6 @@
     "redux": "^3.3.1",
     "redux-saga": "^1.0.5",
     "regenerator-runtime": "^0.13.9",
-    "styled-components": "^5.3.3",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -39,6 +38,7 @@
     "babelify": "^10.0.0",
     "browserify": "^13.3.0",
     "budo": "^8.0.4",
+    "postcss-import": "^14.0.2",
     "tailwindcss": "^3.0.17",
     "tap-spec": "^4.1.1",
     "tape": "^4.2.2"
