@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 const HistoryContainer = styled.div`
     position: absolute;
@@ -43,16 +43,16 @@ export default function History({ searches, loading, error, setInput, handleClic
         {loading && <h2>Loading...</h2>}
         {error && !loading && <h2>{error}</h2>}
         {searches.length > 0 &&
-            <HistoryContainer>
-                <Label>Previous Searches
-                    <List>
+            <div>
+                <label>Previous Searches
+                    <ul>
                         {searches.map((item) => {
                             return (
-                                <Item onClick={(e) => handleClick(e)} onMouseEnter={() => setInput(item.data)} value={item.data} key={item.id}>{item.data}</Item>
+                                <li onClick={(e) => handleClick(e)} onMouseEnter={() => setInput(item.data)} value={item.data} key={item.id}>{item.data}</li>
                         )})}
-                    </List>
-                </Label>
-            </HistoryContainer>
+                    </ul>
+                </label>
+            </div>
         }
         </>
     )

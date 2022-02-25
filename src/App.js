@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { getGifs } from "./actions";
 import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -9,12 +9,12 @@ import Gif from "./components/gif";
 import Search from "./components/search";
 import Random from './components/random'
 
-const Wrapper = styled.div`
-  width: 90vw;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-`;
+// const Wrapper = styled.div`
+//   width: 90vw;
+//   margin: 0 auto;
+//   display: flex;
+//   flex-direction: column;
+// `;
 
 export default function App() {
   const dispatch = useDispatch();
@@ -28,16 +28,18 @@ export default function App() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center flex-auto">
+    <div 
+    style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: "100%", height: "100%" }}
+    className="flex flex-col justify-center flex-auto">
       <Header />
       <Random />
       <Search />
       {loading && <h2>Loading...</h2>}
       {error && !loading && <h2>{error}</h2>}
       {searchGifs.length > 0 && (
-        <div className="flex-row">
+        <div className="flex flex-row">
           <h1 className="font-mono text-xl">Search Results</h1>
-          <div className="h-10 w-80 flex-row mx-auto">
+          <div className="h-10 w-80 flex flex-row mx-auto">
             {searchGifs.map((gif) => {
               return <Gif gif={gif} key={gif.id} />;
             })}

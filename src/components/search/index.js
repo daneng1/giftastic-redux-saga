@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
-import styled from "styled-components";
+// import styled from "styled-components";
 import { submitSearch } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -74,12 +74,12 @@ export default function Search() {
     const error = useSelector((state) => state.search.error);
 
     return (
-        <FormContainer>
+        <div>
             <form onSubmit={(e) => handleSubmit(e)} onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)}>
                 <label className="text-base">
                     Find Gifs
                 </label>
-                <Input  type="text" value={input} placeholder="SEARCH" onChange={e => setInput(e.target.value)}/>
+                <input  type="text" value={input} placeholder="SEARCH" onChange={e => setInput(e.target.value)}/>
                 <button className="bg-blue inline mx-auto rounded-full h-10 w-10" type="submit" >
                     <FontAwesomeIcon icon={solid('magnifying-glass')}/>
                 </button>
@@ -87,6 +87,6 @@ export default function Search() {
                     <History handleClick={handleClick} setInput={setInput} searches={searches} loading={loading} error={error} />
                 } 
             </form>
-        </FormContainer>
+        </div>
     )
 }

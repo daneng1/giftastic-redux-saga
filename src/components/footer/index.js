@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 const Copyright = styled.p`
     font-size: 1.5em;
